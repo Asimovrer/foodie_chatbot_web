@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食探AI - 全国美食推荐助手</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-container"></div>
+    
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>食探AI</h1>
+                        <p>全国美食智能推荐助手</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline" id="surpriseBtn">
+                        <i class="fas fa-face-grin-tears"></i> 惊喜彩蛋
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 主内容 -->
+    <main class="container">
+        <div class="chat-container">
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <button class="btn btn-primary" id="newChatBtn">
+                        <i class="fas fa-plus"></i> 新建对话
+                    </button>
+                </div>
+                
+                <!-- 历史记录 -->
+                <div class="history-section">
+                    <div class="sidebar-title">
+                        <i class="fas fa-history"></i>
+                        <h3>对话历史</h3>
+                        <small id="conversationCount">(0)</small>
+                    </div>
+                    
+                    <div class="history-list" id="historyList">
+                        <!-- 历史记录项将通过JavaScript动态添加 -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 聊天区域 -->
+            <div class="chat-area">
+                <!-- 聊天头部 -->
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <h3 id="currentConversationName">食探AI助手</h3>
+                        <p>
+                            <span class="status-indicator"></span>
+                            <span id="conversationStatus">在线 · 专业美食推荐</span>
+                        </p>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="btn-icon" id="deleteHistoryBtn" title="请先选择对话" disabled>
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <button class="btn-icon" id="starChatBtn" title="请先选择对话" disabled>
+                            <i class="far fa-star"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 聊天消息 -->
+                <div class="chat-messages" id="chatMessages">
+                    <!-- 初始时没有任何消息，通过JavaScript动态添加 -->
+                </div>
+                
+                <!-- 输入区域 -->
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <textarea class="input-box" id="messageInput" placeholder="输入您想了解的美食或地区，例如：成都的火锅推荐 或 上海适合约会的高档餐厅..." rows="1"></textarea>
+                        <button class="send-btn" id="sendButton">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 通知 -->
+    <div class="notification" id="starNotification">
+        <span id="starMessage">对话已标记并置顶！</span>
+    </div>
+    
+    <!-- 视频弹窗 -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3>🎉 食探AI惊喜彩蛋 🎉</h3>
+                <button class="close-btn" id="closeVideoBtn">&times;</button>
+            </div>
+            <div class="video-wrapper">
+                <video id="surpriseVideo" controls>
+                    <source src="{{ url_for('static', filename='videos/surprise.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('static', filename='videos/surprise.webm') }}" type="video/webm">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+            <div class="video-modal-footer">
+                <p>🎬 感谢使用食探AI！希望这个彩蛋给您带来好心情！</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
