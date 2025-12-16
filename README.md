@@ -1,0 +1,2 @@
+# foodie_chatbot_web
+利用百度千帆模型API实现自己的全国美食推荐助手
